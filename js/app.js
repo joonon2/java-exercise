@@ -7,13 +7,21 @@ function loginSubmit(event) {
     event.preventDefault();
     const username = nameInput.value;
     nameForm.classList.add("hidden")
+    localStorage.setItem("username", username)
     changeGreeting(username)
 }
 
+const savedUserName = localStorage.getItem("username")
+
 //이름 입력되면 이름반영해서 인사하기
 function changeGreeting(name) {
-    greeting.innerText = "Hello" + name;
+    greeting.innerText = "Hello " + name;
     nameInput.value=""
 }
 
-nameForm.addEventListener("submit", loginSubmit);
+if (savedUserName !== null) {
+    changeGreeting(savedUserName)
+} else {
+    nameForm.classList.remove("hidden")
+    nameForm.addEventListener("submit", loginSubmit);
+}
