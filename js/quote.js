@@ -21,5 +21,7 @@ const quotes = [
 
 const printQuote = quotes[parseInt(Math.random() * quotes.length)]
 
+console.log(parseInt(Math.random() * quotes.length))
+
 quote.innerText = printQuote.quote
 author.innerText = printQuote.author
